@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExampleComponent } from './example.component';
+import { HaederUserComponent } from './haeder-user.component';
 
-describe('ExampleComponent', () => {
-  let component: ExampleComponent;
-  let fixture: ComponentFixture<ExampleComponent>;
+describe('HaederUserComponent', () => {
+  let component: HaederUserComponent;
+  let fixture: ComponentFixture<HaederUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExampleComponent]
+      imports: [HaederUserComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ExampleComponent);
+    fixture = TestBed.createComponent(HaederUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
