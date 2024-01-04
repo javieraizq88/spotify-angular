@@ -1,11 +1,9 @@
-import { HomeModule } from './home.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TracksModule } from '../tracks/tracks.module';
 import { FavoritesPageModule } from '../favorites/favorites-page.module';
 import { HistoryModule } from '../history/history.module';
-import { SharedModule } from '@shared/shared.module';
 
 
 const routes: Routes = [
@@ -24,7 +22,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule. forChild(routes), SharedModule, TracksModule, FavoritesPageModule, HistoryModule],
-  exports: [RouterModule, TracksModule, FavoritesPageModule, HistoryModule]
+  imports: [
+    RouterModule.
+    forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class HomeRoutingModule { }
