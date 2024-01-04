@@ -6,7 +6,8 @@ import { SharedModule } from '@shared/shared.module';
 import { TracksModule } from '@modules/tracks/tracks.module';
 import { HistoryModule } from '@modules/history/history.module';
 import { AuthModule } from '@modules/auth/auth.module';
-import { FavoritesPageModule } from '@modules/favorites/favorites-page.module';
+import { FavoritesModule } from '@modules/favorites/favorites.module';
+
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { FavoritesPageModule } from '@modules/favorites/favorites-page.module';
     RouterOutlet,
     NgForOf,
     AuthModule,
-    FavoritesPageModule,
+    FavoritesModule,
     HistoryModule,
     HomeModule,
     TracksModule,

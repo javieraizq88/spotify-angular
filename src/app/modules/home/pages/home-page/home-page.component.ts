@@ -14,5 +14,5 @@ import { SharedModule } from '@shared/shared.module';
   styleUrl: './home-page.component.less'
 })
 export class HomePageComponent {
-
+  
 }

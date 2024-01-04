@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TracksModule } from '../tracks/tracks.module';
-import { FavoritesPageModule } from '../favorites/favorites-page.module';
+
 import { HistoryModule } from '../history/history.module';
+import { FavoritesModule } from '../favorites/favorites.module';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
 },
 {
   path: "favorites",
-  loadChildren:() => import(`@modules/favorites/favorites-page.module`).then(m => m.FavoritesPageModule)
+  loadChildren:() => import(`@modules/favorites/favorites.module`).then(m => m.FavoritesModule)
 },
 {
   path: "history",
