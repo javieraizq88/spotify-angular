@@ -15,7 +15,9 @@ import { HaederUserComponent } from './components/haeder-user/haeder-user.compon
     HaederUserComponent
   ],
   exports: [
-    SideBarComponent
+    SideBarComponent,
+    MediaPlayerComponent,
+    HaederUserComponent
   ]
 })
 export class SharedModule { }
