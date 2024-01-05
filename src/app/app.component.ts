@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule, NgFor, NgForOf } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgForOf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HomeModule } from './modules/home/home.module';
 import { SharedModule } from '@shared/shared.module';
@@ -16,11 +16,11 @@ import { FavoritesModule } from '@modules/favorites/favorites.module';
     CommonModule,
     RouterOutlet,
     NgForOf,
+    NgClass,
     AuthModule,
     FavoritesModule,
     HistoryModule,
     HomeModule,
-    TracksModule,
     SharedModule,
   ],
   templateUrl: './app.component.html',

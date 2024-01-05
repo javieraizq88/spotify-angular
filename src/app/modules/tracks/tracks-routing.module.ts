@@ -15,8 +15,12 @@ const routes: Routes = [
     RouterModule.
     forChild(routes),
     RouterOutlet,
-    TracksPageComponent
+
   ],
-  exports: [RouterModule, RouterOutlet]
+  exports: [
+    RouterModule,
+    RouterOutlet,
+
+  ]
 })
 export class TracksRoutingModule { }
