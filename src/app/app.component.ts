@@ -6,7 +6,7 @@ import { SharedModule } from '@shared/shared.module';
 import { TracksModule } from '@modules/tracks/tracks.module';
 import { HistoryModule } from '@modules/history/history.module';
 import { AuthModule } from '@modules/auth/auth.module';
-import { FavoritesModule } from '@modules/favorites/favorites.module';
+
 
 
 @Component({
@@ -18,7 +18,6 @@ import { FavoritesModule } from '@modules/favorites/favorites.module';
     NgForOf,
     NgClass,
     AuthModule,
-    FavoritesModule,
     HistoryModule,
     HomeModule,
     SharedModule,
