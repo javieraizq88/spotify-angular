@@ -1,5 +1,6 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { TrackModel } from '@core/models/tracks.model';
 
 @Component({
@@ -8,6 +9,7 @@ import { TrackModel } from '@core/models/tracks.model';
   imports: [
     NgClass,
     NgIf,
+
   ],
   templateUrl: './card-player.component.html',
   styleUrl: './card-player.component.less'

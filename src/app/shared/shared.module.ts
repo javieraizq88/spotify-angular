@@ -5,6 +5,8 @@ import { MediaPlayerComponent } from './components/media-player/media-player.com
 import { HaederUserComponent } from './components/haeder-user/haeder-user.component';
 import { SectionGenericComponent } from './components/section-generic/section-generic.component';
 import { CardPlayerComponent } from './components/card-player/card-player.component';
+import { PlayListBodyComponent } from './components/play-list-body/play-list-body.component';
+import { PlayListHeaderComponent } from './components/play-list-header/play-list-header.component';
 
 
 
@@ -12,18 +14,22 @@ import { CardPlayerComponent } from './components/card-player/card-player.compon
   declarations: [],
   imports: [
     CommonModule,
-    SideBarComponent,
-    MediaPlayerComponent,
-    HaederUserComponent,
     CardPlayerComponent,
+    HaederUserComponent,
+    MediaPlayerComponent,
+    PlayListBodyComponent,
+    PlayListHeaderComponent,
     SectionGenericComponent,
+    SideBarComponent,
   ],
   exports: [
-    SideBarComponent,
-    MediaPlayerComponent,
-    HaederUserComponent,
     CardPlayerComponent,
+    HaederUserComponent,
+    MediaPlayerComponent,
+    PlayListBodyComponent,
+    PlayListHeaderComponent,
     SectionGenericComponent,
+    SideBarComponent,
   ]
 })
 export class SharedModule { }
