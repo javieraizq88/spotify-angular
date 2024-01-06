@@ -13,8 +13,6 @@ import { FavoritesModule } from '@modules/favorites/favorites.module';
     CommonModule,
     HomeRoutingModule,
     HomePageComponent,
-
-
   ]
 })
 export class HomeModule { }
