@@ -1,8 +1,8 @@
 <div class="play-list-body">
   <ul class="play-list-table-header">
-      <li >Nombre ❤</li>
-      <li >álbum 🆗</li>
-      <li>fecha incorporación 🍌😁</li>
+      <li >Nombre</li>
+      <li >álbum</li>
+      <li>fecha incorporación</li>
       <li><i class="uil uil-clock-eight"></i></li>
   </ul>
  <ul class="play-list-rows" *ngFor="let track of tracks">
@@ -18,11 +18,10 @@
       <li class="track-name-opacity">
           {{track.album}}
       </li>
-
   </ul>
 </div>
 
-<!--template del cover-->
+<!--template de cada canción o cover-->
  <ng-template #coverSection let-track="track">
 
   <div class="cover-section">
