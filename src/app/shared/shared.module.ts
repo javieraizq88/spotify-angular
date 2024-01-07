@@ -7,6 +7,7 @@ import { SectionGenericComponent } from './components/section-generic/section-ge
 import { CardPlayerComponent } from './components/card-player/card-player.component';
 import { PlayListBodyComponent } from './components/play-list-body/play-list-body.component';
 import { PlayListHeaderComponent } from './components/play-list-header/play-list-header.component';
+import { RouterLink, RouterModule } from '@angular/router';
 
 
 
@@ -14,6 +15,7 @@ import { PlayListHeaderComponent } from './components/play-list-header/play-list
   declarations: [],
   imports: [
     CommonModule,
+    RouterModule,
     CardPlayerComponent,
     HaederUserComponent,
     MediaPlayerComponent,
@@ -30,6 +32,7 @@ import { PlayListHeaderComponent } from './components/play-list-header/play-list
     PlayListHeaderComponent,
     SectionGenericComponent,
     SideBarComponent,
+    RouterLink
   ]
 })
 export class SharedModule { }

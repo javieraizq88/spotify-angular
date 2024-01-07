@@ -1,12 +1,14 @@
 import { NgClass, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
   imports: [
     NgFor,
-    NgClass
+    NgClass,
+    RouterLink
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.less'
@@ -28,18 +30,17 @@ export class SideBarComponent {
       {
         name: 'Home',
         icon: 'uil uil-estate',
-        router: ['/', 'auth']
+        router: ['/']
       },
       {
         name: 'Buscar',
         icon: 'uil uil-search',
-        router: ['/', 'history']
+        router: ['/', 'history'] // localhost:4200/history
       },
       {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
         router: ['/', 'favorites'],
-        query: { hola: 'mundo' }
       }
     ]
 
