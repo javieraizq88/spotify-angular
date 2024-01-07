@@ -40,7 +40,8 @@ export class SideBarComponent {
       {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
-        router: ['/', 'favorites', {key1:"key1"}],
+        router: ['/', 'favorites'],
+        query:{hola : "mundo"} //http://localhost:4200/favorites?hola=mundo
       }
     ]
 
