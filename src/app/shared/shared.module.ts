@@ -8,12 +8,11 @@ import { CardPlayerComponent } from './components/card-player/card-player.compon
 import { PlayListBodyComponent } from './components/play-list-body/play-list-body.component';
 import { PlayListHeaderComponent } from './components/play-list-header/play-list-header.component';
 import { RouterLink, RouterModule } from '@angular/router';
-import { OrderListPipe } from './pipe/order-list.pipe';
-
+import { OrderListPipe } from './pipes/sort.pipe';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [    OrderListPipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -24,7 +23,7 @@ import { OrderListPipe } from './pipe/order-list.pipe';
     PlayListHeaderComponent,
     SectionGenericComponent,
     SideBarComponent,
-    OrderListPipe,
+
   ],
   exports: [
     CardPlayerComponent,
@@ -35,7 +34,7 @@ import { OrderListPipe } from './pipe/order-list.pipe';
     SectionGenericComponent,
     SideBarComponent,
     RouterLink,
-    OrderListPipe,
+
   ]
 })
 export class SharedModule { }

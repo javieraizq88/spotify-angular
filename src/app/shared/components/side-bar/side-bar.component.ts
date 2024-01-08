@@ -79,6 +79,6 @@ export class SideBarComponent {
   }
 
   goTo($event:any): void {
-    console.log($event)
+
   }
 }

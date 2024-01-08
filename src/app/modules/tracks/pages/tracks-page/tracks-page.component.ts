@@ -25,6 +25,6 @@ export class TracksPageComponent implements OnInit {
   ngOnInit(): void {
     const { data }: any = (dataRaw as any).default
     this.mockTrackList = data;
-    console.log(data)
+
   }
 }
