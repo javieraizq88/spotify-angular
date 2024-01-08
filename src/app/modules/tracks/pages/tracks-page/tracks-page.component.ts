@@ -1,9 +1,10 @@
 import { NgClass, NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 import * as dataRaw from "../../../../data/tracks.json";
 import { TrackModel } from '@core/models/tracks.model';
+import { ImgBrokenDirective } from '../../../../shared/directives/img-broken.directive';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class TracksPageComponent implements OnInit {
 
   mockTrackList: Array<TrackModel> = [
   ]
+
   constructor() { }
 
   ngOnInit(): void {

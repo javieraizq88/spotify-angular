@@ -10,10 +10,12 @@ import { PlayListHeaderComponent } from './components/play-list-header/play-list
 import { RouterLink, RouterModule } from '@angular/router';
 import { OrderListPipe } from './pipes/sort.pipe';
 import { ImgBrokenDirective } from './directives/img-broken.directive';
+import { Directive } from '@angular/core';
 
 
 @NgModule({
-  declarations: [    OrderListPipe],
+  declarations: [    OrderListPipe ,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -37,7 +39,7 @@ import { ImgBrokenDirective } from './directives/img-broken.directive';
     SideBarComponent,
     RouterLink,
     OrderListPipe,
-    ImgBrokenDirective,
+    ImgBrokenDirective
   ]
 })
 export class SharedModule { }
