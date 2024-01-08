@@ -19,8 +19,7 @@ import { ImgBrokenDirective } from '../../../../shared/directives/img-broken.dir
 })
 export class TracksPageComponent implements OnInit {
 
-  mockTrackList: Array<TrackModel> = [
-  ]
+  mockTrackList: Array<TrackModel> = []
 
   constructor() { }
 

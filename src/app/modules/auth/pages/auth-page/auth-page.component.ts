@@ -5,7 +5,7 @@ import { SharedModule } from '@shared/shared.module';
 @Component({
   selector: 'app-auth-page',
   standalone: true,
-  imports: [  ],
+  imports: [ RouterModule ],
   templateUrl: './auth-page.component.html',
   styleUrl: './auth-page.component.less'
 })
