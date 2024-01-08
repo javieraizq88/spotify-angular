@@ -1,9 +1,7 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, Directive, inject, Input } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, Input, OnInit, ElementRef, HostListener } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
-import { OrderListPipe } from '../../pipes/sort.pipe';
-import { ImgBrokenDirective } from '../../directives/img-broken.directive';
+
 
 @Component({
   selector: 'app-card-player',
@@ -16,10 +14,25 @@ import { ImgBrokenDirective } from '../../directives/img-broken.directive';
   styleUrl: './card-player.component.less'
 })
 
-export class CardPlayerComponent {
+export class CardPlayerComponent implements OnInit {
 
-  @Input () mode: 'small' | 'big' = 'small'
-  @Input () track!: TrackModel
+  @Input() mode: 'small' | 'big' = 'small'
+  @Input() track!: TrackModel
 
+
+  //TODO: remmplaza la img q esta rota porla img de elNative.src
+  @HostListener("error") handleError(): void {
+    const elNative = this.elHost.nativeElement
+    console.log("esta imagen", this.elHost);
+    elNative.src = "https://picsum.photos/id/237/200/300"
+  }
+  constructor(private elHost: ElementRef) {
+
+  }
+
+  ngOnInit(): void {
+
+
+  }
 
 }
