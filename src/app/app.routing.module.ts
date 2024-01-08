@@ -8,7 +8,7 @@ import { HomePageComponent } from './modules/home/pages/home-page/home-page.comp
 
 const routes: Routes = [
   {
-    path: "auth",
+    path: "history",
     loadChildren:() => import(`./modules/history/history.module`).then(m => m.HistoryModule)
   },
   {
@@ -16,6 +16,7 @@ const routes: Routes = [
     component: HomePageComponent,
     loadChildren:() => import(`./modules/home/home.module`).then(m => m.HomeModule)
   }
+
 ];
 
 @NgModule({

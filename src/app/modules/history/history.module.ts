@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { HistoryRoutingModule } from './history-routing.module';
 import { HistoryPageComponent } from './pages/history-page/history-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AppRoutingModule } from '../../app.routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    LoginPageComponent,
-    HistoryRoutingModule
+    AppRoutingModule,
+    HistoryRoutingModule,
+    HistoryPageComponent
   ]
 })
 export class HistoryModule { }

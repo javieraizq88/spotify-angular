@@ -6,10 +6,7 @@ import { TracksModule } from '../tracks/tracks.module';
 import { HistoryModule } from '../history/history.module';
 
 const routes: Routes = [
-  {
-    path: "auth",
-    loadChildren:() => import(`@modules/auth/auth.module`).then(m => m.AuthModule)
-  },
+
 {
   path: "tracks",
   loadChildren:() => import(`@modules/tracks/tracks.module`).then(m => m.TracksModule)
