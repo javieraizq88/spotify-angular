@@ -1,6 +1,7 @@
 import { Component, OnInit, TRANSLATIONS } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -14,6 +15,9 @@ export class HistoryPageComponent implements OnInit {
 
   // cada input tiene su propio estado con valor y validacion
   formLogin: FormGroup = new FormGroup({});
+
+  // asigna todos los metodos a asAuthService
+  constructor( private asAuthService: AuthService ) { }
 
   ngOnInit(): void {
     this.formLogin = new FormGroup(
@@ -30,12 +34,13 @@ export class HistoryPageComponent implements OnInit {
       }
     )
   }
-  constructor(  ) { }
+
 
   // captura los valores escritos en los input al hacer click en iniciar sesion
   sendLogin(): void {
-    const body = this.formLogin.value
-    console.log("asd", body);
+    const { email, password }= this.formLogin.value
+
+    this.asAuthService.sendCredentials( email, password )
 
   }
 }
