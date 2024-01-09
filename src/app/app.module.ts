@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CookieService } from 'ngx-cookie-service';
+import { InjectSessionInterceptor } from './core/interceptors/inject-session.interceptor';
 
 
 @NgModule({
@@ -16,18 +17,15 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule
   ],
 
-  // npm install ngx-cookie-service --save 
+  // npm install ngx-cookie-service --save
   providers: [
-    CookieService
-  ]
-  // providers: [
-  //   CookieService,
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: InjectSessionInterceptor,
-  //     multi: true
-  //   }
-  // ],
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InjectSessionInterceptor,
+      multi: true
+    }
+  ],
 
 })
 export class AppModule { }

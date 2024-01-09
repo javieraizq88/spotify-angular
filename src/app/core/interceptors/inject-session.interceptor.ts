@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+
+@Injectable()
+export class InjectSessionInterceptor implements HttpInterceptor {
+
+  constructor(private cookieService: CookieService) { }
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    try {
+      const token = this.cookieService.get('token')
+      let newRequest = request
+      newRequest = request.clone( // TODO clona el nuevo request y le agrega un encabezado con el token
+        {
+          setHeaders: {
+            authorization: `Bearer ${token}`,
+            CUSTOM_HEADER: 'HOLA'
+          }
+        }
+      )
+
+      return next.handle(newRequest);
+
+    } catch (err) {
+      console.log('🔴🔴🔴 error desde el interceptor al iniciar sesion', err)
+      return next.handle(request);
+    }
+  }
+}

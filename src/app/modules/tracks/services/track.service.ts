@@ -1,5 +1,5 @@
 import { TrackModel } from '@core/models/tracks.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, tap, catchError } from 'rxjs/operators';
@@ -44,7 +44,11 @@ export class TrackService {
    * @returns Devolver canciones random
    */
   getAllRandom$(): Observable<any> {
-    return this.http.get(`${this.URL}/tracks`)
+    // se envia la palabra y token q pide el middelware de la API SIN INTERCEPTOR
+    return this.http.get(`${this.URL}/tracks`, {
+      headers: new HttpHeaders({ authorization: "Bearer TOKEN"})
+    }
+    )
       .pipe(
         mergeMap(({ data }: any) => this.skipById(data, 2)),
         // map((dataRevertida) => { //TODO aplicar un filter comun de array
