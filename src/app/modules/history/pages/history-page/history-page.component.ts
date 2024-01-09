@@ -24,7 +24,11 @@ export class HistoryPageComponent implements OnInit {
           Validators.required,
           Validators.email
         ]),
-        password: new FormControl(""),
+        password: new FormControl("", [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(15)
+        ]),
       }
     )
     console.log(this.formLogin);
