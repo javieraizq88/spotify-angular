@@ -9,9 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private readonly URL = environment.api
+
   constructor(private http: HttpClient) { }
 
   sendCredentials(email: string, password: string): Observable<any> {
+//body que la api necesita para el post
     const body = {
       email,
       password
