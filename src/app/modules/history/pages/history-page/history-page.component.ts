@@ -24,6 +24,6 @@ export class HistoryPageComponent implements OnInit {
         password: new FormControl(""),
       }
     )
-
+    console.log(this.formLogin);
   }
 }

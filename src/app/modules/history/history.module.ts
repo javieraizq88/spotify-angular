@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe, PipeTransform } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HistoryRoutingModule } from './history-routing.module';
@@ -12,7 +12,8 @@ import { AppRoutingModule } from '../../app.routing.module';
     CommonModule,
     AppRoutingModule,
     HistoryRoutingModule,
-    HistoryPageComponent
+    HistoryPageComponent,
+  
   ]
 })
 export class HistoryModule { }
