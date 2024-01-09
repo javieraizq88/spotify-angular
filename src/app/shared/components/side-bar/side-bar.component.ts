@@ -1,6 +1,7 @@
 import { NgClass, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { TrackService } from '../../../modules/tracks/services/track.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -19,13 +20,11 @@ export class SideBarComponent {
     defaultOptions: Array<any>, accessLink: Array<any>
   } = { defaultOptions: [], accessLink: [] };
 
-  customOptions:  Array<any> = []
+  customOptions: Array<any> = []
 
-  constructor () { }
+  constructor(private router: Router, private trackService: TrackService) { }
+
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-
     this.mainMenu.defaultOptions = [
       {
         name: 'Home',
@@ -41,10 +40,9 @@ export class SideBarComponent {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
         router: ['/', 'favorites'],
-        query:{hola : "mundo"} //http://localhost:4200/favorites?hola=mundo
+        query: { hola: "mundo" } //http://localhost:4200/favorites?hola=mundo
       }
     ]
-
 
     this.mainMenu.accessLink = [
       {
@@ -76,9 +74,18 @@ export class SideBarComponent {
       }
     ]
 
+    this.trackService.dataCancionesRandom$
+      .subscribe((response: any) => {
+        console.log("desde el side bar", response);
+
+        this.customOptions.push({
+          name: response[0].name,
+          router: []
+        })
+      })
   }
 
-  goTo($event:any): void {
+  goTo($event: any): void {
 
   }
 }

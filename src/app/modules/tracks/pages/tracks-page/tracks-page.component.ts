@@ -8,6 +8,7 @@ import { TrackService } from '../../services/track.service';
 import { response } from 'express';
 import { Subscription } from 'rxjs';
 import { TracksModule } from '../../tracks.module';
+import { timingSafeEqual } from 'crypto';
 
 
 @Component({
@@ -37,20 +38,22 @@ export class TracksPageComponent implements OnInit {
     const observer1$ = this.trackService.dataCancionesTrending$
       .subscribe(response => {
         this.cancionesTrending = response
-      console.log("canciones trending ", response);
-    })
+        this.cancionesRandom = response
+        console.log("canciones trending ", response);
+      })
 
     const observer2$ = this.trackService.dataCancionesRandom$
-    .subscribe(response => {
-
-    console.log("canciones random entrando ", response);
-  })
+      .subscribe(response => {
+        // concatena la cancion random al arreglo de canciones trending y lo muestra a los 4 seg en la seccion de abajo
+        this.cancionesRandom = [...this.cancionesRandom, ...response]
+        console.log("canciones random entrando ", response);
+      })
     this.listObservers$ = [observer1$, observer2$]
   }
 
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
-    this.listObservers$.forEach( u => u.unsubscribe())
+    this.listObservers$.forEach(u => u.unsubscribe())
   }
 }
