@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'node:test/reporters';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { tap } from 'node:test/reporters';
 export class AuthService {
   private readonly URL = environment.api
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
   sendCredentials(email: string, password: string): Observable<any> {
 //body que la api necesita para el post
@@ -20,6 +21,7 @@ export class AuthService {
       password
     }
     return this.http.post(`${this.URL}/auth/login`, body)
+
   }
 
   suma(a: number, b: number): number {
