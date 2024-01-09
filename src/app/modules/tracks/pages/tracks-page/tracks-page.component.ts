@@ -4,8 +4,9 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 import * as dataRaw from "../../../../data/tracks.json";
 import { TrackModel } from '@core/models/tracks.model';
-import { ImgBrokenDirective } from '../../../../shared/directives/img-broken.directive';
 
+import { TrackService } from '../../services/track.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-tracks-page',
@@ -19,13 +20,21 @@ import { ImgBrokenDirective } from '../../../../shared/directives/img-broken.dir
 })
 export class TracksPageComponent implements OnInit {
 
-  mockTrackList: Array<TrackModel> = []
+  cancionesTrending: Array<TrackModel> = []
+  cancionesRandom: Array<TrackModel> = []
 
-  constructor() { }
+  constructor(private trackService: TrackService) { }
 
   ngOnInit(): void {
-    const { data }: any = (dataRaw as any).default
-    this.mockTrackList = data;
+    // muestra un array estático con las canciones
+    // const { data }: any = (dataRaw as any).default
+    // this.mockTrackList = data;
+
+    const observer1$ = this.trackService.dataCancionesTrending$
+      .subscribe(response => {
+      console.log("canciones trending ", response);
+
+    })
 
   }
 }
