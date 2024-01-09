@@ -73,7 +73,8 @@ export class SideBarComponent {
         router: ['/']
       }
     ]
-
+    
+    // muestra la cancion random en el side bar a los 3 seg
     this.trackService.dataCancionesRandom$
       .subscribe((response: any) => {
         console.log("desde el side bar", response);
