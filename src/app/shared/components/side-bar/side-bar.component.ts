@@ -1,7 +1,7 @@
 import { NgClass, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { TrackService } from '../../../modules/tracks/services/track.service';
+
 
 @Component({
   selector: 'app-side-bar',
@@ -22,7 +22,7 @@ export class SideBarComponent {
 
   customOptions: Array<any> = []
 
-  constructor(private router: Router, private trackService: TrackService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
@@ -73,17 +73,17 @@ export class SideBarComponent {
         router: ['/']
       }
     ]
-    
-    // muestra la cancion random en el side bar a los 3 seg
-    this.trackService.dataCancionesRandom$
-      .subscribe((response: any) => {
-        console.log("desde el side bar", response);
 
-        this.customOptions.push({
-          name: response[0].name,
-          router: []
-        })
-      })
+    // muestra la cancion random en el side bar a los 3 seg
+    // this.trackService.dataCancionesRandom$
+    //   .subscribe((response: any) => {
+    //     console.log("desde el side bar", response);
+
+    //     this.customOptions.push({
+    //       name: response[0].name,
+    //       router: []
+    //     })
+    //   })
   }
 
   goTo($event: any): void {
