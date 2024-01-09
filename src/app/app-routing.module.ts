@@ -1,3 +1,4 @@
+import { sessionGuard } from '@core/guards/session.guard';
 
 import { HomePageComponent } from './modules/home/pages/home-page/home-page.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,7 @@ const routes: Routes = [ //TODO: router-outlet (Padre)
     path: '',//TODO (Private) 🔴🔴
     component: HomePageComponent,
     // loadChildren: () => import(`./modules/home/home.module`).then(m => m.HomeModule),
-    // canActivate: [SessionGuard]
+     canActivate: [sessionGuard]
   }
 ];
 
