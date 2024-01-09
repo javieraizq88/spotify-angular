@@ -31,6 +31,8 @@ export class HistoryPageComponent implements OnInit {
     )
   }
   constructor(  ) { }
+
+  // captura los valores escritos en los input al hacer click en iniciar sesion
   sendLogin(): void {
     const body = this.formLogin.value
     console.log("asd", body);
