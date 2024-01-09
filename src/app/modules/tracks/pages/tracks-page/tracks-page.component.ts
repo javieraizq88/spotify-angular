@@ -28,13 +28,13 @@ export class TracksPageComponent implements OnInit, OnDestroy {
   }
 
   loadDataRandom(): void {
-    // this.trackService.getAllRandom$()
-    //   .subscribe(
-    //     (response: TrackModel[]) => {
-    //       this.tracksRandom = response
-    //     }, err => {
-    //       console.log("Error de conexión");
-    //     })
+    this.trackService.getAllRandom$()
+   .subscribe((response: TrackModel[]) => {
+          this.tracksRandom = response
+       }, err => {
+        //  alert("error de conexión")
+        console.log("Error de conexión");
+       })
   }
 
   ngOnDestroy(): void {

@@ -10,7 +10,7 @@ import { environment } from 'src/assets/environments/environment';
 export class TrackService {
   private readonly URL = environment.api
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { }
 
   /**
    *
@@ -50,6 +50,9 @@ export class TrackService {
         // map((dataRevertida) => { //TODO aplicar un filter comun de array
         //   return dataRevertida.filter((track: TrackModel) => track._id !== 1)
         // })
+
+
+        // algo entra, algo se debe capturar y retorna un observable vacio
         catchError((err) => {
           const { status, statusText } = err;
           return of([])
