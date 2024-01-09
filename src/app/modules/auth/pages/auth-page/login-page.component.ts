@@ -1,8 +1,8 @@
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@modules/auth/services/auth.service';
-
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +14,10 @@ export class LoginPageComponent implements OnInit {
   errorSession: boolean = false
   formLogin: UntypedFormGroup = new UntypedFormGroup({});
 
-  constructor(private authService: AuthService, private cookie: CookieService) { }
+  constructor(
+    private authService: AuthService,
+    private cookie: CookieService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.formLogin = new UntypedFormGroup(
@@ -40,7 +43,8 @@ export class LoginPageComponent implements OnInit {
         console.log("sesion iniciada correctamente");
         // agrega una nueva cookie
         const { tokenSession, data } = responseOk
-        this.cookie.set('token', tokenSession, 4, '/') //TODO:duracion de 4 dias
+        this.cookie.set('token', tokenSession, 4, '/') //TODO: duracion de 4 dias
+        this.router.navigate(['/', 'tracks']) // TODO: redirecciona a tracks al iniciar sesion 
       },
         err => { // TODO: errores > 400
           this.errorSession = true
