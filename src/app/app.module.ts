@@ -15,6 +15,8 @@ import { CookieService } from 'ngx-cookie-service';
     AppRoutingModule,
     HttpClientModule
   ],
+
+  // npm install ngx-cookie-service --save 
   providers: [
     CookieService
   ]
