@@ -1,5 +1,5 @@
 import { Component, OnInit, TRANSLATIONS } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
 
@@ -20,7 +20,10 @@ export class HistoryPageComponent implements OnInit {
   ngOnInit(): void {
     this.formLogin = new FormGroup(
       {
-        email: new FormControl(""),
+        email: new FormControl("", [
+          Validators.required,
+          Validators.email
+        ]),
         password: new FormControl(""),
       }
     )
