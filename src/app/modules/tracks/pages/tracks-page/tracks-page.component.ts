@@ -3,10 +3,12 @@ import { Component, Directive, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@shared/shared.module';
 import * as dataRaw from "../../../../data/tracks.json";
-import { TrackModel } from '@core/models/tracks.model';
 
 import { TrackService } from '../../services/track.service';
 import { response } from 'express';
+import { Subscription } from 'rxjs';
+import { TracksModule } from '../../tracks.module';
+
 
 @Component({
   selector: 'app-tracks-page',
@@ -20,8 +22,10 @@ import { response } from 'express';
 })
 export class TracksPageComponent implements OnInit {
 
-  cancionesTrending: Array<TrackModel> = []
-  cancionesRandom: Array<TrackModel> = []
+  cancionesTrending: Array<TracksModule> = []
+  cancionesRandom: Array<TracksModule> = []
+
+  listObservers$: Array<Subscription> = []
 
   constructor(private trackService: TrackService) { }
 
@@ -32,9 +36,16 @@ export class TracksPageComponent implements OnInit {
 
     const observer1$ = this.trackService.dataCancionesTrending$
       .subscribe(response => {
+        this.cancionesTrending = response
       console.log("canciones trending ", response);
-
     })
 
+    this.listObservers$ = [observer1$]
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.listObservers$.forEach( u => u.unsubscribe())
   }
 }
