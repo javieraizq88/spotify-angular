@@ -44,9 +44,6 @@ export class LoginPageComponent implements OnInit {
           this.errorSession = true
           console.log("error en mail o contraseña");
         })
-
-
-
   }
 
 }
