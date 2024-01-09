@@ -40,7 +40,12 @@ export class TracksPageComponent implements OnInit {
       console.log("canciones trending ", response);
     })
 
-    this.listObservers$ = [observer1$]
+    const observer2$ = this.trackService.dataCancionesRandom$
+    .subscribe(response => {
+
+    console.log("canciones random entrando ", response);
+  })
+    this.listObservers$ = [observer1$, observer2$]
   }
 
   ngOnDestroy(): void {
