@@ -1,22 +1,19 @@
-import { NgClass, NgFor } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { TracksModule } from '@modules/tracks/tracks.module';
-import { CardPlayerComponent } from '../card-player/card-player.component';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { TrackModel } from '@core/models/tracks.model';
 
 @Component({
   selector: 'app-section-generic',
-  standalone: true,
-  imports: [
-    NgFor,
-    NgClass,
-    CardPlayerComponent,
-  ],
   templateUrl: './section-generic.component.html',
-  styleUrl: './section-generic.component.less'
+  styleUrls: ['./section-generic.component.less']
 })
-export class SectionGenericComponent {
+export class SectionGenericComponent implements OnInit {
   @Input() title: string = ''
   @Input() mode: 'small' | 'big' = 'big'
-  @Input() dataTracks: Array<any> = []
+  @Input() dataTracks: Array<TrackModel> = []
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

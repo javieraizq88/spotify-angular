@@ -1,6 +1,6 @@
 import { TrackModel } from './../../core/models/tracks.model';
+import { OrderListPipe } from './order-list.pipe';
 import * as mockRaw from '../../data/tracks.json'
-import { OrderListPipe } from './sort.pipe';
 
 describe('OrderListPipe', () => {
   it('create an instance', () => {

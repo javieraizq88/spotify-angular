@@ -1,24 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 import { TracksRoutingModule } from './tracks-routing.module';
 import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
-import { ImgBrokenDirective } from '@shared/directives/img-broken.directive';
-import { HttpClientModule } from '@angular/common/http';
-
+import { SharedModule } from '@shared/shared.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [    TracksPageComponent,
+  ],
   imports: [
     CommonModule,
     TracksRoutingModule,
-    TracksPageComponent,
-    ImgBrokenDirective,
-    HttpClientModule
-  ],
-  exports: [
-    ImgBrokenDirective
+    SharedModule
   ]
 })
 export class TracksModule { }

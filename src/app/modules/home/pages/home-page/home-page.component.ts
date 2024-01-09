@@ -6,13 +6,9 @@ import { SharedModule } from '@shared/shared.module';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [
-    SharedModule,
-    RouterModule
-  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.less'
 })
 export class HomePageComponent {
-  
+
 }

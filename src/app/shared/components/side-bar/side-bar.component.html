@@ -1,8 +1,7 @@
 <div class="side-bar">
   <div><i class="uil uil-ellipsis-h"></i></div>
   <ul class="side-bar__list list-one">
-    <!-- agrega a todos los links key1:'value1 -->
-     <li [routerLink]="item.router" [queryParams]="item.query" *ngFor="let item of mainMenu.defaultOptions">
+      <li [routerLink]="item.router" [queryParams]="item.query" *ngFor="let item of mainMenu.defaultOptions">
           <div class="list-wrapper-item">
               <i [ngClass]="['uil',item.icon]"></i>
               <span class="side-bar__list list-label">{{item.name}}</span>
@@ -11,7 +10,7 @@
   </ul>
   <div class="side-bar__separator"></div>
   <ul class="side-bar__list list-two">
-      <li [routerLink]="item.router" [queryParams]="{key2:'value2'}" *ngFor="let item of mainMenu.accessLink">
+      <li *ngFor="let item of mainMenu.accessLink">
           <div class="list-wrapper-item">
               <i [ngClass]="['uil',item.icon]"></i>
               <span class="side-bar__list list-label">{{item.name}}</span>
@@ -20,7 +19,7 @@
   </ul>
   <div class="side-bar__separator line-separator"></div>
   <ul class="side-bar__list list-three">
-      <li [routerLink]="item.router" [queryParams]="{key3:'value3'}" *ngFor="let item of customOptions">
+      <li *ngFor="let item of customOptions">
           <div class="list-wrapper-item">
               <span class="side-bar__list list-label">{{item.name}}</span>
           </div>

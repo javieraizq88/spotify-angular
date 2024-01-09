@@ -1,24 +1,16 @@
-import { NgClass, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
-
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
-  standalone: true,
-  imports: [
-    NgFor,
-    NgClass,
-    RouterLink
-  ],
   templateUrl: './side-bar.component.html',
-  styleUrl: './side-bar.component.less'
+  styleUrls: ['./side-bar.component.less']
 })
-export class SideBarComponent {
+export class SideBarComponent implements OnInit {
 
   mainMenu: {
     defaultOptions: Array<any>, accessLink: Array<any>
-  } = { defaultOptions: [], accessLink: [] };
+  } = { defaultOptions: [], accessLink: [] }
 
   customOptions: Array<any> = []
 
@@ -29,18 +21,18 @@ export class SideBarComponent {
       {
         name: 'Home',
         icon: 'uil uil-estate',
-        router: ['/']
+        router: ['/', 'auth']
       },
       {
         name: 'Buscar',
         icon: 'uil uil-search',
-        router: ['/', 'history'] // localhost:4200/history
+        router: ['/', 'history']
       },
       {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
         router: ['/', 'favorites'],
-        query: { hola: "mundo" } //http://localhost:4200/favorites?hola=mundo
+        query: { hola: 'mundo' }
       }
     ]
 
@@ -74,19 +66,16 @@ export class SideBarComponent {
       }
     ]
 
-    // muestra la cancion random en el side bar a los 3 seg
-    // this.trackService.dataCancionesRandom$
-    //   .subscribe((response: any) => {
-    //     console.log("desde el side bar", response);
-
-    //     this.customOptions.push({
-    //       name: response[0].name,
-    //       router: []
-    //     })
-    //   })
   }
 
   goTo($event: any): void {
-
+    this.router.navigate(['/', 'favorites'], {
+      queryParams: {
+        key1: 'value1',
+        key2: 'value2',
+        key3: 'value3'
+      }
+    })
+    console.log($event)
   }
 }
