@@ -92,12 +92,12 @@ export class MultimediaService {
 
   }
 
-  private setPercentage(currentTime: number, duration: number): void {
-    //TODO duration ---> 100%
+  private setPercentage(currentTime: number, duration: number): void { // valor q se usa en el style width dando el largo de la barra
     //TODO currentTime ---> (x)
+    //TODO duration ---> 100%
     //TODO (currentTime * 100) / duration
     let percentage = (currentTime * 100) / duration;
-    this.playerPercentage$.next(percentage)
+    this.playerPercentage$.next(percentage) // beheaviorsubject
   }
 
 
