@@ -45,7 +45,6 @@ export class MultimediaService {
 
   }
 
-
   private setTimeElapsed(currentTime: number): void {
     let seconds = Math.floor(currentTime % 60) // TODO da los valores enteros de los segundos transcurridos de la cancion
     let minutes = Math.floor((currentTime / 60) % 60)
@@ -99,10 +98,6 @@ export class MultimediaService {
     let percentage = (currentTime * 100) / duration;
     this.playerPercentage$.next(percentage) // beheaviorsubject
   }
-
-
-
-
 
 
 
