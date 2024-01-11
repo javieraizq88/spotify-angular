@@ -40,6 +40,7 @@
       <button class="arrow btn">
         <i class="uil uil-previous"></i>
       </button>
+      <!-- btn play q cambia al hacer click al boton pausa-->
       <button (click)="multimediaService.togglePlayer()" class="play btn">
         <i [ngClass]="{
                   'uil-play-circle':state === 'paused',

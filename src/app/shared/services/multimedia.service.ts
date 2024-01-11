@@ -38,30 +38,13 @@ export class MultimediaService {
   private listenAllEvents(): void { // va a escuchar los eventos q se disparen cada boton desde audio
 
     this.audio.addEventListener('timeupdate', this.calculateTime, false)
-    this.audio.addEventListener('playing', this.setPlayerStatus, false)
+    this.audio.addEventListener('playing', this.setPlayerStatus, false) // al partir la reproduccion
     this.audio.addEventListener('play', this.setPlayerStatus, false)
     this.audio.addEventListener('pause', this.setPlayerStatus, false)
-    this.audio.addEventListener('ended', this.setPlayerStatus, false)
+    this.audio.addEventListener('ended', this.setPlayerStatus, false) // al terminar la cancion
 
   }
 
-  private setPlayerStatus = (state: any) => {
-    switch (state.type) { //TODO: --> playing
-      case 'play':
-        this.playerStatus$.next('play')
-        break
-      case 'playing':
-        this.playerStatus$.next('playing')
-        break
-      case 'ended':
-        this.playerStatus$.next('ended')
-        break
-      default:
-        this.playerStatus$.next('paused')
-        break;
-    }
-
-  }
 
   private setTimeElapsed(currentTime: number): void {
     let seconds = Math.floor(currentTime % 60) // TODO da los valores enteros de los segundos transcurridos de la cancion
@@ -69,7 +52,7 @@ export class MultimediaService {
 
     const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds; //TODO  00:00 ---> 01:05 --> 10:15
     const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes;
-    const displayFormat = `${displayMinutes}:${displaySeconds}` //muestra el tiempo q va transcurriendo de la cancion 
+    const displayFormat = `${displayMinutes}:${displaySeconds}` //muestra el tiempo q va transcurriendo de la cancion
     this.timeElapsed$.next(displayFormat)
   }
 
@@ -89,6 +72,24 @@ export class MultimediaService {
     this.setTimeElapsed(currentTime)
     this.setRemaining(currentTime, duration)
     this.setPercentage(currentTime, duration)
+  }
+
+  private setPlayerStatus = (state: any) => {
+    switch (state.type) { //TODO: --> playing
+      case 'play':
+        this.playerStatus$.next('play')
+        break
+      case 'playing':
+        this.playerStatus$.next('playing')
+        break
+      case 'ended':
+        this.playerStatus$.next('ended')
+        break
+      default:
+        this.playerStatus$.next('paused')
+        break;
+    }
+
   }
 
   private setPercentage(currentTime: number, duration: number): void {
@@ -114,7 +115,7 @@ export class MultimediaService {
     this.audio.play()
   }
 
-  public togglePlayer(): void {
+  public togglePlayer(): void { // va a poner pausa a la cancion cambiando el estado del evento al hacer click
     (this.audio.paused) ? this.audio.play() : this.audio.pause()
   }
 
