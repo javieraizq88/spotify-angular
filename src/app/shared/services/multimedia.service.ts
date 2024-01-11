@@ -9,6 +9,8 @@ import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 export class MultimediaService {
   callback: EventEmitter<any> = new EventEmitter<any>()
 
+  myObservable1$: Observable<any> = new Observable ()
+
   public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined)
   public audio!: HTMLAudioElement //TODO <audio>
   public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject('00:00')
@@ -17,6 +19,24 @@ export class MultimediaService {
   public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0)
 
   constructor() {
+
+    this.myObservable1$= new Observable (
+      (observer: Observer<any>) => {
+        observer.next("asdasdasd")
+
+        setTimeout(() => {
+          observer.complete
+        }, 2500) // TODO: se inicia y se termina el flujo de datos
+
+        setTimeout(() => {
+          observer.next("asdasdasd")
+        }, 2500) // TODO: despues de 2,5 seg llega de nuevo el observer asdasdasd
+
+        setTimeout(() => {
+          observer.error("error del observable desde media player a multimedia serve")
+        }, 2500) // TODO: despues de 2,5 seg llega de nuevo el observer asdasdasd
+      }
+    )
 
     this.audio = new Audio()
 
