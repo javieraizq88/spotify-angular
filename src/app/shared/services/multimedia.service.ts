@@ -18,7 +18,7 @@ export class MultimediaService {
   public audio!: HTMLAudioElement //TODO <audio>
 
   public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject('00:00')
-  public timeRemaining$: BehaviorSubject<string> = new BehaviorSubject('-00:00')
+  public timeRemaining$: BehaviorSubject<string> = new BehaviorSubject('-00:00') // muestra cuando tiempo falta de la cancion
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused')
   public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0)
 
@@ -35,7 +35,7 @@ export class MultimediaService {
 
   }
 
-  private listenAllEvents(): void {
+  private listenAllEvents(): void { // va a escuchar los eventos q se disparen cada boton desde audio
 
     this.audio.addEventListener('timeupdate', this.calculateTime, false)
     this.audio.addEventListener('playing', this.setPlayerStatus, false)
@@ -63,8 +63,29 @@ export class MultimediaService {
 
   }
 
+  private setTimeElapsed(currentTime: number): void {
+    let seconds = Math.floor(currentTime % 60) // TODO da los valores enteros de los segundos transcurridos de la cancion
+    let minutes = Math.floor((currentTime / 60) % 60)
+
+    const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds; //TODO  00:00 ---> 01:05 --> 10:15
+    const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes;
+    const displayFormat = `${displayMinutes}:${displaySeconds}` //muestra el tiempo q va transcurriendo de la cancion 
+    this.timeElapsed$.next(displayFormat)
+  }
+
+  private setRemaining(currentTime: number, duration: number): void { // tiempo restante de la cancion
+    let timeLeft = duration - currentTime;
+    let seconds = Math.floor(timeLeft % 60)
+    let minutes = Math.floor((timeLeft / 60) % 60)
+
+    const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds;
+    const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes;
+    const displayFormat = `-${displayMinutes}:${displaySeconds}`
+    this.timeRemaining$.next(displayFormat)
+  }
+
   private calculateTime = () => {
-    const { duration, currentTime } = this.audio
+    const { duration, currentTime } = this.audio // duration y currentTime son propiedades de HTMLAudioElement
     this.setTimeElapsed(currentTime)
     this.setRemaining(currentTime, duration)
     this.setPercentage(currentTime, duration)
@@ -79,25 +100,9 @@ export class MultimediaService {
   }
 
 
-  private setTimeElapsed(currentTime: number): void {
-    let seconds = Math.floor(currentTime % 60) //TODO 1,2,3
-    let minutes = Math.floor((currentTime / 60) % 60)
-    //TODO  00:00 ---> 01:05 --> 10:15
-    const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds;
-    const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes;
-    const displayFormat = `${displayMinutes}:${displaySeconds}`
-    this.timeElapsed$.next(displayFormat)
-  }
 
-  private setRemaining(currentTime: number, duration: number): void {
-    let timeLeft = duration - currentTime;
-    let seconds = Math.floor(timeLeft % 60)
-    let minutes = Math.floor((timeLeft / 60) % 60)
-    const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds;
-    const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes;
-    const displayFormat = `-${displayMinutes}:${displaySeconds}`
-    this.timeRemaining$.next(displayFormat)
-  }
+
+
 
 
   //TODO: Funciones publicas
