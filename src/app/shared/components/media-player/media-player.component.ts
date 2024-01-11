@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { TrackModel } from '@core/models/tracks.model';
+import { } from '@core/models/tracks.model';
 import { MultimediaService } from '@shared/services/multimedia.service';
 import { Subscription } from 'rxjs'; //TODO: Programacion reactiva!
+import { TracksModule } from '../../../modules/tracks/tracks.module';
 
 @Component({
   selector: 'app-media-player',
@@ -9,24 +10,20 @@ import { Subscription } from 'rxjs'; //TODO: Programacion reactiva!
   styleUrls: ['./media-player.component.less']
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
-  @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('')
   listObservers$: Array<Subscription> = []
+
+
+
+  @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('')
   state: string = 'paused'
+
+
   constructor(public multimediaService: MultimediaService) { }
 
   ngOnInit(): void {
 
-    const observer1$ = this.multimediaService.myObservable1$ // TODO: une el componente con el multimedia service
-      .subscribe(
-        (responseOk) => {
-          console.log("llega la info desde multimeia service");
 
-        },
-        (responseFail) => {
-          console.log("no llega la info desde multimeia service");
 
-        }
-      )
   }
 
   ngOnDestroy(): void {
