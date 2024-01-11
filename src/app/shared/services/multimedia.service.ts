@@ -9,7 +9,10 @@ import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 export class MultimediaService {
   callback: EventEmitter<any> = new EventEmitter<any>()
 
-  myObservable1$: Observable<any> = new Observable ()
+  // myObservable1$: Observable<any> = new Observable () -----> se usa este para el ejemplo 1
+  // myObservable1$: Subject<any> = new Subject() // el subject es observer y observable a la vez ----> ejemplo 2
+  myObservable1$: BehaviorSubject<any> = new BehaviorSubject("") // se debe inicializar con algo, BehaviorSubject es observer y observable a la vez
+
 
   public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined)
   public audio!: HTMLAudioElement //TODO <audio>
@@ -18,25 +21,40 @@ export class MultimediaService {
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused')
   public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0)
 
+
   constructor() {
 
-    this.myObservable1$= new Observable (
-      (observer: Observer<any>) => {
-        observer.next("asdasdasd")
 
-        setTimeout(() => {
-          observer.complete
-        }, 2500) // TODO: se inicia y se termina el flujo de datos
 
-        setTimeout(() => {
-          observer.next("asdasdasd")
-        }, 2500) // TODO: despues de 2,5 seg llega de nuevo el observer asdasdasd
 
-        setTimeout(() => {
-          observer.error("error del observable desde media player a multimedia serve")
-        }, 2500) // TODO: despues de 2,5 seg llega de nuevo el observer asdasdasd
-      }
-    )
+    //     setTimeout(() => {
+    //       observer.complete
+    //     }, 2500) // TODO: se inicia y se termina el flujo de datos
+
+    //     setTimeout(() => {
+    //       observer.next("asdasdasd")
+    //     }, 2500) // TODO: despues de 2,5 seg llega de nuevo el observer asdasdasd
+
+    //     setTimeout(() => {
+    //       observer.error("error del observable desde media player a multimedia serve")
+    //     }, 2500) // TODO: despues de 2,5 seg llega de nuevo el observer asdasdasd
+    //   }
+    // )
+
+
+// ejemplo 2
+    // setTimeout(() =>{
+    //   this.myObservable1$.next("recibir datos desde el media player")
+    // }, 1000) // espera q  se ejecute el oninit de media player y despues se ejecuta este componente
+
+    // setTimeout(() =>{
+    //   this.myObservable1$.error("error")
+    // }, 3000)
+
+    // ejemplo 1
+    // this.myObservable1$= new Observable (
+    //   (observer: Observer<any>) => {
+    //     observer.next("asdasdasd")
 
     this.audio = new Audio()
 
