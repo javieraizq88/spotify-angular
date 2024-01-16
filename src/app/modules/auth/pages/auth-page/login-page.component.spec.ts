@@ -49,7 +49,7 @@ describe('LoginPageComponent', () => {
 
     //TODO: Assert
 
-    expect(component.formLogin.invalid).toEqual(true); 
+    expect(component.formLogin.invalid).toEqual(true);
   });
 
   it('✔✔ Deberia de retornar "valido" el formulario', () => {
@@ -73,12 +73,14 @@ describe('LoginPageComponent', () => {
     expect(component.formLogin.invalid).toEqual(false);
   });
 
+
+  // TEST: btn iniciar sesión
   it('👍 El boton deberia de tener la palabra "Iniciar sesión"', () => {
 
     const elementRef = fixture.debugElement.query(By.css('.form-action button'))
-    const getInnerText = elementRef.nativeElement.innerText
+    const getInnerText = elementRef.nativeElement.innerText // captura el innerTesxt
 
-    expect(getInnerText).toEqual('Iniciar sesión')
+    expect(getInnerText).toEqual('Iniciar sesión') // InnerText debe ser igual a iniciar sesión
 
   })
 
