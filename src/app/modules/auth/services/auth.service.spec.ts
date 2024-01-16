@@ -13,8 +13,6 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['post'])
-    service = new AuthService(httpClientSpy as any)
   });
 
   it('should be created', () => {
