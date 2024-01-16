@@ -29,7 +29,7 @@ describe('OrderListPipe', () => {
     const lastValue = data.find((i: any) => i._id === 6) //TODO TNT
 
     //TODO:Act
-    const result: TrackModel[] = pipe.transform(data, 'name', 'asc')
+    const result: TrackModel[] = pipe.transform(data, 'name', 'asc') // filtro usando el nombre de manera ascendente
     const firstResult = result[0]
     const lastResult = result[result.length - 1]
 
