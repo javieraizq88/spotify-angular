@@ -26,21 +26,21 @@ describe('LoginPageComponent', () => {
     fixture.detectChanges();
   });
 
-  //TODO: Tu primer enunciado el cual debe de asegurar lo siguiente
-  //TODO: Debe de asegurarse que el formulario sea invalido cuando ingrese dato erroneos
+  //TODO: Tu primer enunciado el cual debe de asegurar que el formulario sea invalido cuando ingrese dato erroneos
 
-  //TODO: Patron AAA
+  //TODO: Patron AAA = Arrange, Act, Assert
 
   it('🔴 Deberia de retornar "invalido" el formulario', () => {
 
     //TODO: Arrange
+    // se escrben cosas que NO pasen la validación
     const mockCredentials = {
       email: '0x0x0x0x0x0',
       password: '1111111111111111111111111'
     }
 
-    const emailForm: any = component.formLogin.get('email')
-    const passwordForm: any = component.formLogin.get('password')
+    const emailForm: any = component.formLogin.get('email') // captura el email q esta en el form component
+    const passwordForm: any = component.formLogin.get('password') // captura la password q esta en el form component
 
     //TODO: Act
 
@@ -49,7 +49,7 @@ describe('LoginPageComponent', () => {
 
     //TODO: Assert
 
-    expect(component.formLogin.invalid).toEqual(true);
+    expect(component.formLogin.invalid).toEqual(true); 
   });
 
   it('✔✔ Deberia de retornar "valido" el formulario', () => {
