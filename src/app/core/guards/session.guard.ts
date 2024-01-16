@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
 export class sessionGuard  {
 
   constructor(
-    // se pasa las cookie para q las revise
-    private cookieService: CookieService,
+    private cookieService: CookieService,     // se pasa las cookie para q las revise
     private router: Router) {
-  }
+      
+    }
 
   canActivate(
     route: ActivatedRouteSnapshot,
