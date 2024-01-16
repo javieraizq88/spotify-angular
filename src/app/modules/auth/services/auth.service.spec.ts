@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
-import * as mockRaw from '../../../data/tracks.json'
+import * as mockRaw from '../../../data/user.json'
 import { of } from 'rxjs';
 
 describe('AuthService', () => {
@@ -13,6 +13,8 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['post'])
+    // service = new AuthService(httpClientSpy as any)
   });
 
   it('should be created', () => {
@@ -26,8 +28,8 @@ describe('AuthService', () => {
 
       //TODO: Arrange
 
-      const user: any = mockUser.userOk
-      const mockResponse = {
+      const user: any = mockUser.userOk // se va a usar el usuario con datos correctos
+      const mockResponse = { // al ejecutarlo, debe resultar el valor
         data: {},
         tokenSession: '0x0x0x'
       }
@@ -38,11 +40,11 @@ describe('AuthService', () => {
 
       //TODO: Act
       service.sendCredentials(user.email, user.password)
-        .subscribe(responseApi => {//TODO ['data','tokenSession']
+        .subscribe(responseApi => {//TODO respuesta de la API ['data','tokenSession']
           const getProperties = Object.keys(responseApi)
-          expect(getProperties).toContain('data')
-          expect(getProperties).toContain('tokenSession')
-          done()
+          expect(getProperties).toContain('data') // se espera el valor data
+          expect(getProperties).toContain('tokenSession') // se espera el valor tokenSession
+          done() // TODO fin de la peticion 
         })
 
     })
