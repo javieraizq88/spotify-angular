@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { SharedModule } from '../../../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { PlayListBodyComponent } from '../../../../shared/components/play-list-body/play-list-body.component';
 
 @Component({
   selector: 'app-favorite-page',
   standalone: true,
   imports: [
-    SharedModule,
-    RouterModule
+    RouterModule,
+    PlayListBodyComponent,
   ],
   templateUrl: './favorite-page.component.html',
   styleUrl: './favorite-page.component.less'

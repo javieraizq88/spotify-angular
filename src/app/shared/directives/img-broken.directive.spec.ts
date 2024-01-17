@@ -2,7 +2,6 @@ import { Component, ElementRef } from '@angular/core';
 import { ImgBrokenDirective } from './img-broken.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { after } from 'node:test';
 
 // componente de prueba
 
@@ -60,7 +59,7 @@ describe('ImgBrokenDirective', () => {
       done() // fin del test
     }, 3000);
 
-    
+
   });
 
 })

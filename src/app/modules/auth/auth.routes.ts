@@ -1,0 +1,13 @@
+import { Routes } from '@angular/router';
+import { LoginPageComponent } from './pages/auth-page/login-page.component';
+
+export const authRoutes: Routes = [
+  {
+    path: 'login',//TODO http://localhost:4200/auth/login
+    component: LoginPageComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/auth/login'
+  }
+];

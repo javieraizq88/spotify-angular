@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { TrackModel } from '@core/models/tracks.model';
 import { SearchService } from '@modules/history/services/search.service';
 import { Observable, of } from 'rxjs';
+import { RouterModule } from '@angular/router';
+import { PlayListBodyComponent } from '../../../../shared/components/play-list-body/play-list-body.component';
 
 @Component({
-  selector: 'app-history-page',
-  templateUrl: './history-page.component.html',
-  styleUrls: ['./history-page.component.less']
+  selector: 'app-favorite-page',
+  standalone: true,
+  imports: [
+    RouterModule,
+    PlayListBodyComponent
+  ],
+  templateUrl: './history-page.component1.html',
+  styleUrl: './history-page.component.less'
 })
 export class HistoryPageComponent implements OnInit {
 

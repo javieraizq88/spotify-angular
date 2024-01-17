@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { } from '@core/models/tracks.model';
 import { MultimediaService } from '@shared/services/multimedia.service';
 import { Subscription } from 'rxjs'; //TODO: Programacion reactiva!
-import { TracksModule } from '../../../modules/tracks/tracks.module';
+import { NgTemplateOutlet, NgIf, NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-media-player',
-  templateUrl: './media-player.component.html',
-  styleUrls: ['./media-player.component.less']
+    selector: 'app-media-player',
+    templateUrl: './media-player.component.html',
+    styleUrls: ['./media-player.component.less'],
+    standalone: true,
+    imports: [NgTemplateOutlet, NgIf, NgClass, AsyncPipe]
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
   listObservers$: Array<Subscription> = []
